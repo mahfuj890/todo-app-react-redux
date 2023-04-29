@@ -30,10 +30,31 @@ function reducer(state = initialState, action) {
         }
         return {
           ...todo,
-          completed: !completed,
+          completed: !todo.completed,
         };
       });
-
+    case COLORSELECTEDTODO:
+      return state.map((todo) => {
+        const { todoId, color } = action.payload;
+        if (todo.id !== todoId) {
+          return todo;
+        }
+        return {
+          ...todo,
+          color: color,
+        };
+      });
+    case DELETETODO:
+      return state.filter((todo) => todo.id !== action.payload);
+    case ALLCOMPLETETODO:
+      return state.map((todo) => {
+        return {
+          ...todo,
+          completed: true,
+        };
+      });
+    case CLEARTODO:
+      return state.filter((todo) => !todo.completed);
     default:
       break;
   }
