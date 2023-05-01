@@ -11,9 +11,9 @@ function App() {
 
   return (
     <div className="App">
-      <div class="grid place-items-center bg-blue-100 h-screen px-6 font-sans">
+      <div className="grid place-items-center bg-blue-100 h-screen px-6 font-sans">
         <Navbar />
-        <div class="w-full max-w-3xl shadow-lg rounded-lg p-6 bg-white">
+        <div className="w-full max-w-3xl shadow-lg rounded-lg p-6 bg-white">
           <Header />
           <Todo/>
           <TodoList />

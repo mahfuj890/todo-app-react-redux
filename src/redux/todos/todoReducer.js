@@ -14,7 +14,7 @@ function generateNextID(todos) {
   return maxID;
 }
 
-function reducer(state = initialState, action) {
+function todoReducer(state = initialState, action) {
   switch (action.type) {
     case ADDED:
       return [
@@ -60,4 +60,4 @@ function reducer(state = initialState, action) {
   }
 }
 
-export default reducer;
+export default todoReducer;
