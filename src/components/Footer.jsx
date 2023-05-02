@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { statusChange } from "../redux/filter/actions";
+import { colorChange, statusChange } from "../redux/filter/actions";
 
 //Task Remaining condition
 const calculateTodoLength = (number) => {
@@ -28,7 +28,17 @@ export default function Footer() {
   const handleFilterStatus = (status) => {
     dispatch(statusChange(status));
   };
-  console.log("getFilter", getFilter?.status === "all");
+
+  //Handle Color Filter
+  const handleColorFilter = (color) => {
+    if (getFilter?.colors.includes(color)) {
+      dispatch(colorChange(color, "removed"));
+    } else {
+      dispatch(colorChange(color, "added"));
+    }
+  };
+
+  console.log("getFilter", getFilter?.colors);
 
   return (
     <div className="mt-4 flex justify-between text-xs text-gray-500">
@@ -60,11 +70,25 @@ export default function Footer() {
         >
           Complete
         </li>
-        <li></li>
-        <li></li>
-        <li className="h-3 w-3 border-2 border-green-500 md:hover:bg-green-500 rounded-full cursor-pointer bg-green-500"></li>
-        <li className="h-3 w-3 border-2 border-red-500 md:hover:bg-red-500 rounded-full cursor-pointer"></li>
-        <li className="h-3 w-3 border-2 border-yellow-500 md:hover:bg-yellow-500 rounded-full cursor-pointer"></li>
+
+        <li
+          className={`h-3 w-3 border-2 border-green-500 md:hover:bg-green-500 rounded-full cursor-pointer ml-2 ${
+            getFilter?.colors.includes("green") && "bg-green-500"
+          }`}
+          onClick={() => handleColorFilter("green")}
+        ></li>
+        <li
+          className={`h-3 w-3 border-2 border-red-500 md:hover:bg-red-500 rounded-full cursor-pointer ${
+            getFilter?.colors.includes("red") && "bg-red-500"
+          }`}
+          onClick={() => handleColorFilter("red")}
+        ></li>
+        <li
+          className={`h-3 w-3 border-2 border-yellow-500 md:hover:bg-yellow-500 rounded-full cursor-pointer ${
+            getFilter?.colors.includes("yellow") && "bg-yellow-500"
+          }`}
+          onClick={() => handleColorFilter("yellow")}
+        ></li>
       </ul>
     </div>
   );
