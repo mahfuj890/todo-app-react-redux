@@ -21,6 +21,8 @@ function todoReducer(state = initialState, action) {
         ...state,
         {
           id: generateNextID(state),
+          text:action.payload,
+          completed:false,
         },
       ];
     case TOGGLETODO:
