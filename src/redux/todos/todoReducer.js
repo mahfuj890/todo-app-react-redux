@@ -5,6 +5,7 @@ import {
   DELETETODO,
   ALLCOMPLETETODO,
   CLEARTODO,
+  LOADED,
 } from "./actionTypes";
 import { initialState } from "./initialState";
 
@@ -16,13 +17,15 @@ function generateNextID(todos) {
 
 function todoReducer(state = initialState, action) {
   switch (action.type) {
+    case LOADED:
+      return action.payload;
     case ADDED:
       return [
         ...state,
         {
           id: generateNextID(state),
-          text:action.payload,
-          completed:false,
+          text: action.payload,
+          completed: false,
         },
       ];
     case TOGGLETODO:

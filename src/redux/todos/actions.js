@@ -5,7 +5,16 @@ import {
   COLORSELECTEDTODO,
   DELETETODO,
   TOGGLETODO,
+  LOADED,
 } from "./actionTypes";
+
+//add load todo
+export const loaded = (todos) => {
+  return {
+    type: LOADED,
+    payload: todos,
+  };
+};
 
 //add new todo
 export const added = (todoText) => {
