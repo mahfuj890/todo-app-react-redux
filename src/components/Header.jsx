@@ -4,6 +4,7 @@ import noteImage from "../assets/images/notes.png";
 import plusImage from "../assets/images/plus.png";
 import { useDispatch } from "react-redux";
 import { added,allComplete,allClear } from "../redux/todos/actions";
+import addTodo from "../redux/todos/thunk/addtodo";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ export default function Header() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(added(input));
+    dispatch(addTodo(input));
     setInput("");
   };
 

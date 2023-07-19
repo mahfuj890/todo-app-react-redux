@@ -9,11 +9,6 @@ export default function TodoList() {
 
   const dispatch = useDispatch();
 
-  //Get todo
-  useEffect(() => {
-    dispatch(fetchTodo);
-  }, []);
-
   const filterByStatus = (todo) => {
     switch (getFilter?.status) {
       case "complete":
@@ -33,6 +28,10 @@ export default function TodoList() {
     return true;
   };
 
+  //Get todo
+  useEffect(() => {
+    dispatch(fetchTodo);
+  }, []);
   return (
     <div className="mt-2 text-gray-700 text-sm max-h-[300px] overflow-y-auto">
       {getTodos
