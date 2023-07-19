@@ -2,6 +2,8 @@ import { useDispatch } from "react-redux";
 import cancelImage from "../assets/images/cancel.png";
 import { colorSelected, toggle, deleted } from "../redux/todos/actions";
 import updateStatus from "../redux/todos/thunk/updateStatus";
+import updateColor from "../redux/todos/thunk/updateColor";
+import deleteTodo from "../redux/todos/thunk/deleteTodo";
 
 export default function Todo({ todo }) {
   const dispatch = useDispatch();
@@ -14,19 +16,19 @@ export default function Todo({ todo }) {
 
   //Color Selected
   const handleColorSelected = (id, color, todo) => {
-    dispatch(colorSelected(id, color));
+    dispatch(updateColor(id, color));
   };
 
   //Delete Todo
   const handleDeleteTodo = (id) => {
     alert("Are you sure you want delete?");
-    dispatch(deleted(id));
+    dispatch(deleteTodo(id));
   };
 
   return (
     <div className="flex justify-start items-center p-2 hover:bg-gray-100 hover:transition-all space-x-4 border-b border-gray-400/20 last:border-0">
       <div
-        className={`rounded-full bg-white border-2 border-gray-400 w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2   cursor-pointer ${
+        className={`relative rounded-full bg-white border-2 border-gray-400 w-5 h-5 flex flex-shrink-0 justify-center items-center mr-2   cursor-pointer ${
           todo?.completed && "border-green-500 focus-within:border-green-500"
         }`}
       >
