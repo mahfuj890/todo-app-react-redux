@@ -16,7 +16,7 @@
 Clone the project
 
 ```bash
-  git clone [https://link-to-project](https://github.com/mahfuj890/todo-app-react-redux.git)
+  git clone https://github.com/mahfuj890/todo-app-react-redux.git
 ```
 
 Go to the project directory
