@@ -38,7 +38,7 @@ export default function Footer() {
     }
   };
 
-  console.log("getFilter", getFilter);
+
 
   return (
     <div className="mt-4 flex justify-between text-xs text-gray-500">
